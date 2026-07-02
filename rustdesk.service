@@ -1,0 +1,17 @@
+# This file needs to be installed at /ect/systemd/system/rustdesk.service.
+# This file needs to be owned by the container(s) user.
+# This file needs the execute permission.
+
+[Unit]
+Description=RustDesk Relay and ID Servers
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/podman-compose -f /home/containers/volumes/rustdesk/compose.yml up
+WorkingDirectory=/home/containers/volumes/rustdesk
+Restart=always
+User=containers
+Group=containers
+
+[Install]
+WantedBy=multi-user.target
