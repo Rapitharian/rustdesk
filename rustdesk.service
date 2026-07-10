@@ -7,7 +7,9 @@ Description=RustDesk Relay and ID Servers
 After=network.target
 
 [Service]
+Environment="PODMAN_ARGS=--cgroup-manager=cgroupfs"
 ExecStart=/usr/bin/podman-compose -f /home/containers/volumes/rustdesk/compose.yml up
+ExecStop=/usr/bin/podman-compose -f /home/containers/volumes/rustdesk/compose.yml down
 WorkingDirectory=/home/containers/volumes/rustdesk
 Restart=always
 User=containers
