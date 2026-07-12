@@ -4,7 +4,8 @@
 
 [Unit]
 Description=RustDesk Relay and ID Servers
-After=network.target
+#After=network.target
+After=network-online.target
 
 [Service]
 Environment="PODMAN_ARGS=--cgroup-manager=cgroupfs"
